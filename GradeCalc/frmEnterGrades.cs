@@ -17,6 +17,7 @@ namespace GradeCalc
         private double weight;
         #endregion
 
+        #region Construct and Load
         public frmEnterGrades()
         {
             InitializeComponent();
@@ -26,8 +27,11 @@ namespace GradeCalc
         private void frmEnterGrades_Load(object sender, EventArgs e)
         {
             btnTestType.AutoCheck = false;
+            lblFinalGrade.Text = "";
         }
+        #endregion
 
+        #region Ui Events and helper methods
         private void clearButtons()
         {
             btnTestType.Checked = false;
@@ -51,6 +55,7 @@ namespace GradeCalc
             type = GradeType.Test;
             weight = 0.4;
             refreshGradesList();
+            txtGrade.Focus();
         }
 
         private void btnLabType_Click(object sender, EventArgs e)
@@ -60,6 +65,7 @@ namespace GradeCalc
             type = GradeType.Lab;
             weight = 0.4;
             refreshGradesList();
+            txtGrade.Focus();
         }
 
         private void btnDLType_Click(object sender, EventArgs e)
@@ -69,7 +75,22 @@ namespace GradeCalc
             type = GradeType.DL;
             weight = 0.2;
             refreshGradesList();
+            txtGrade.Focus();
         }
+
+        private void btnCalcFinal_Click(object sender, EventArgs e)
+        {
+            double final =
+                (CalculateGrade(GradeType.Test) * Weight(GradeType.Test)) + (CalculateGrade(GradeType.Lab) * Weight(GradeType.Lab))
+                + (CalculateGrade(GradeType.DL) * Weight(GradeType.DL));
+            lblFinalGrade.Text = "Final Grade: " + Math.Round(final, 1).ToString() + " (" + Validator.GetLetter(final) + ")";
+        }
+
+        private void txtGrade_TextChanged(object sender, EventArgs e)
+        {
+            btnEnterGrade.Enabled = (txtGrade.Text != "" && Validator.isDouble(txtGrade) && Validator.inGradeRange(Convert.ToDouble(txtGrade.Text)));
+        }
+        #endregion
 
         public void refreshGradesList()
         {
@@ -87,11 +108,6 @@ namespace GradeCalc
             DisplaySectionGrade();
             IsFinalReady();
             
-        }
-
-        private void txtGrade_TextChanged(object sender, EventArgs e)
-        {
-            btnEnterGrade.Enabled = (txtGrade.Text != "" && Validator.isDouble(txtGrade) && Validator.inGradeRange(Convert.ToDouble(txtGrade.Text)));
         }
 
         private double CalculateGrade(GradeType type)
@@ -133,13 +149,6 @@ namespace GradeCalc
             btnCalcFinal.Enabled = (count[0] > 0 && count[1] > 0 && count[2] > 0);
         }
 
-        private void btnCalcFinal_Click(object sender, EventArgs e)
-        {
-            double final =
-                (CalculateGrade(GradeType.Test) * Weight(GradeType.Test)) + (CalculateGrade(GradeType.Lab) * Weight(GradeType.Lab))
-                + (CalculateGrade(GradeType.DL) * Weight(GradeType.DL));
-            lblFinalGrade.Text = "Final Grade: " + Math.Round(final, 1).ToString() + " (" + Validator.GetLetter(final) + ")";
-        }
-
+     
     }
 }

@@ -181,12 +181,13 @@
             this.lblFinalGrade.AutoSize = true;
             this.lblFinalGrade.Location = new System.Drawing.Point(193, 136);
             this.lblFinalGrade.Name = "lblFinalGrade";
-            this.lblFinalGrade.Size = new System.Drawing.Size(13, 13);
+            this.lblFinalGrade.Size = new System.Drawing.Size(91, 13);
             this.lblFinalGrade.TabIndex = 10;
-            this.lblFinalGrade.Text = "--";
+            this.lblFinalGrade.Text = "-Final Grade Calc-";
             // 
             // frmEnterGrades
             // 
+            this.AcceptButton = this.btnEnterGrade;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(320, 176);
@@ -201,6 +202,8 @@
             this.Controls.Add(this.btnEnterGrade);
             this.Controls.Add(this.gradeList);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmEnterGrades";
             this.Text = "Enter Grades";
             this.Load += new System.EventHandler(this.frmEnterGrades_Load);
