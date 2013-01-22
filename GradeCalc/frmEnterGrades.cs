@@ -84,7 +84,61 @@ namespace GradeCalc
                 if (g.Type == type)
                     gradeList.Items.Add(g.GradeValue);
             }
+            DisplaySectionGrade();
+            IsFinalReady();
             
+        }
+
+        private void txtGrade_TextChanged(object sender, EventArgs e)
+        {
+            btnEnterGrade.Enabled = (txtGrade.Text != "" && Validator.isDouble(txtGrade) && Validator.inGradeRange(Convert.ToDouble(txtGrade.Text)));
+        }
+
+        private double CalculateGrade(GradeType type)
+        {
+            double total = 0;
+            double count = 0;
+            foreach (Grade g in grades)
+            {
+                if (g.Type == type)
+                {
+                    total += g.GradeValue;
+                    count++;
+                }
+            }
+
+            return (count > 0) ? total / count : 0;
+        }
+
+        private void DisplaySectionGrade()
+        {
+            txtAvgGrade.Text = Math.Round(CalculateGrade(type), 1).ToString();
+            txtWeighted.Text = Math.Round((CalculateGrade(type) * Weight(type)), 1).ToString();
+        }
+
+        private double Weight(GradeType type)
+        {
+            double[] weights = { 0.4, 0.4, 0.2 };
+            return weights[(int)type];
+        }
+
+        private void IsFinalReady()
+        {
+            int[] count = { 0, 0, 0 };
+            foreach (Grade g in grades)
+            {
+                count[(int)g.Type]++;
+            }
+
+            btnCalcFinal.Enabled = (count[0] > 0 && count[1] > 0 && count[2] > 0);
+        }
+
+        private void btnCalcFinal_Click(object sender, EventArgs e)
+        {
+            double final =
+                (CalculateGrade(GradeType.Test) * Weight(GradeType.Test)) + (CalculateGrade(GradeType.Lab) * Weight(GradeType.Lab))
+                + (CalculateGrade(GradeType.DL) * Weight(GradeType.DL));
+            lblFinalGrade.Text = "Final Grade: " + Math.Round(final, 1).ToString() + " (" + Validator.GetLetter(final) + ")";
         }
 
     }

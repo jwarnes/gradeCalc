@@ -53,7 +53,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(81, 95);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Grade Type";
             // 
@@ -64,7 +64,7 @@
             this.btnDLType.Location = new System.Drawing.Point(6, 65);
             this.btnDLType.Name = "btnDLType";
             this.btnDLType.Size = new System.Drawing.Size(39, 17);
-            this.btnDLType.TabIndex = 3;
+            this.btnDLType.TabIndex = 2;
             this.btnDLType.TabStop = true;
             this.btnDLType.Text = "DL";
             this.btnDLType.UseVisualStyleBackColor = true;
@@ -77,7 +77,7 @@
             this.btnLabType.Location = new System.Drawing.Point(6, 42);
             this.btnLabType.Name = "btnLabType";
             this.btnLabType.Size = new System.Drawing.Size(43, 17);
-            this.btnLabType.TabIndex = 2;
+            this.btnLabType.TabIndex = 1;
             this.btnLabType.TabStop = true;
             this.btnLabType.Text = "Lab";
             this.btnLabType.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             this.btnTestType.Location = new System.Drawing.Point(6, 19);
             this.btnTestType.Name = "btnTestType";
             this.btnTestType.Size = new System.Drawing.Size(46, 17);
-            this.btnTestType.TabIndex = 1;
+            this.btnTestType.TabIndex = 0;
             this.btnTestType.TabStop = true;
             this.btnTestType.Text = "Test";
             this.btnTestType.UseVisualStyleBackColor = true;
@@ -106,29 +106,33 @@
             // 
             // btnEnterGrade
             // 
+            this.btnEnterGrade.Enabled = false;
             this.btnEnterGrade.Location = new System.Drawing.Point(12, 136);
             this.btnEnterGrade.Name = "btnEnterGrade";
             this.btnEnterGrade.Size = new System.Drawing.Size(81, 23);
-            this.btnEnterGrade.TabIndex = 2;
+            this.btnEnterGrade.TabIndex = 1;
             this.btnEnterGrade.Text = "Enter Grade";
             this.btnEnterGrade.UseVisualStyleBackColor = true;
             this.btnEnterGrade.Click += new System.EventHandler(this.btnEnterGrade_Click);
             // 
             // btnCalcFinal
             // 
+            this.btnCalcFinal.Enabled = false;
             this.btnCalcFinal.Location = new System.Drawing.Point(182, 84);
             this.btnCalcFinal.Name = "btnCalcFinal";
             this.btnCalcFinal.Size = new System.Drawing.Size(124, 23);
             this.btnCalcFinal.TabIndex = 3;
             this.btnCalcFinal.Text = "Calculate Final Grade";
             this.btnCalcFinal.UseVisualStyleBackColor = true;
+            this.btnCalcFinal.Click += new System.EventHandler(this.btnCalcFinal_Click);
             // 
             // txtGrade
             // 
             this.txtGrade.Location = new System.Drawing.Point(12, 110);
             this.txtGrade.Name = "txtGrade";
             this.txtGrade.Size = new System.Drawing.Size(80, 20);
-            this.txtGrade.TabIndex = 4;
+            this.txtGrade.TabIndex = 0;
+            this.txtGrade.TextChanged += new System.EventHandler(this.txtGrade_TextChanged);
             // 
             // label1
             // 
@@ -175,7 +179,7 @@
             // lblFinalGrade
             // 
             this.lblFinalGrade.AutoSize = true;
-            this.lblFinalGrade.Location = new System.Drawing.Point(216, 136);
+            this.lblFinalGrade.Location = new System.Drawing.Point(193, 136);
             this.lblFinalGrade.Name = "lblFinalGrade";
             this.lblFinalGrade.Size = new System.Drawing.Size(13, 13);
             this.lblFinalGrade.TabIndex = 10;
