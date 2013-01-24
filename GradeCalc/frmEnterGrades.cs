@@ -15,6 +15,8 @@ namespace GradeCalc
         private List<Grade> grades;
         private GradeType type;
         private double weight;
+        private frmNewStudent ParentFrm;
+        private double final = -1;
         #endregion
 
         #region Construct and Load
@@ -22,6 +24,7 @@ namespace GradeCalc
         {
             InitializeComponent();
             grades = new List<Grade>();
+            ParentFrm = parent;
         }
 
         private void frmEnterGrades_Load(object sender, EventArgs e)
@@ -80,7 +83,7 @@ namespace GradeCalc
 
         private void btnCalcFinal_Click(object sender, EventArgs e)
         {
-            double final =
+            final =
                 (CalculateGrade(GradeType.Test) * Weight(GradeType.Test)) + (CalculateGrade(GradeType.Lab) * Weight(GradeType.Lab))
                 + (CalculateGrade(GradeType.DL) * Weight(GradeType.DL));
             lblFinalGrade.Text = "Final Grade: " + Math.Round(final, 1).ToString() + " (" + Grade.GetLetter(final) + ")";
@@ -149,6 +152,16 @@ namespace GradeCalc
             btnCalcFinal.Enabled = (count[0] > 0 && count[1] > 0 && count[2] > 0);
         }
 
+        private void lblFinalGrade_TextChanged(object sender, EventArgs e)
+        {
+            btnSaveGrade.Enabled = (final > -1);
+        }
+
+        private void btnSaveGrade_Click(object sender, EventArgs e)
+        {
+            ParentFrm.SetGrade(Math.Round(final, 2));
+            Close();
+        }
      
     }
 }

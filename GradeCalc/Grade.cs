@@ -48,8 +48,6 @@ namespace GradeCalc
 
         #endregion
 
-
-
         public Grade(double grade, double weight, GradeType type)
         {
             this.grade = grade;

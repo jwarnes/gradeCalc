@@ -47,7 +47,7 @@
             this.cbName.Location = new System.Drawing.Point(67, 9);
             this.cbName.Name = "cbName";
             this.cbName.Size = new System.Drawing.Size(121, 21);
-            this.cbName.TabIndex = 0;
+            this.cbName.TabIndex = 1;
             this.cbName.TextUpdate += new System.EventHandler(this.control_TextUpdate);
             this.cbName.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
@@ -62,7 +62,7 @@
             this.cbCourse.Location = new System.Drawing.Point(67, 37);
             this.cbCourse.Name = "cbCourse";
             this.cbCourse.Size = new System.Drawing.Size(121, 21);
-            this.cbCourse.TabIndex = 1;
+            this.cbCourse.TabIndex = 3;
             this.cbCourse.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // cbYear
@@ -70,6 +70,8 @@
             this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Items.AddRange(new object[] {
+            "2009",
+            "2010",
             "2011",
             "2012",
             "2013",
@@ -77,7 +79,7 @@
             this.cbYear.Location = new System.Drawing.Point(67, 65);
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(121, 21);
-            this.cbYear.TabIndex = 2;
+            this.cbYear.TabIndex = 5;
             this.cbYear.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // cbTerm
@@ -90,7 +92,7 @@
             this.cbTerm.Location = new System.Drawing.Point(67, 93);
             this.cbTerm.Name = "cbTerm";
             this.cbTerm.Size = new System.Drawing.Size(121, 21);
-            this.cbTerm.TabIndex = 3;
+            this.cbTerm.TabIndex = 7;
             this.cbTerm.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // label1
@@ -99,8 +101,8 @@
             this.label1.Location = new System.Drawing.Point(27, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Name:";
+            this.label1.TabIndex = 0;
+            this.label1.Text = "&Name:";
             // 
             // label2
             // 
@@ -108,8 +110,8 @@
             this.label2.Location = new System.Drawing.Point(22, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Course:";
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Cou&rse:";
             // 
             // label3
             // 
@@ -117,8 +119,8 @@
             this.label3.Location = new System.Drawing.Point(33, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Year:";
+            this.label3.TabIndex = 4;
+            this.label3.Text = "&Year:";
             // 
             // label4
             // 
@@ -126,8 +128,8 @@
             this.label4.Location = new System.Drawing.Point(31, 98);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Term:";
+            this.label4.TabIndex = 6;
+            this.label4.Text = "&Term:";
             // 
             // btnCalc
             // 
@@ -135,16 +137,17 @@
             this.btnCalc.Location = new System.Drawing.Point(6, 121);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(55, 20);
-            this.btnCalc.TabIndex = 6;
-            this.btnCalc.Text = "Calculate";
+            this.btnCalc.TabIndex = 8;
+            this.btnCalc.Text = "&Calculate";
             this.btnCalc.UseVisualStyleBackColor = true;
+            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
             // txtGrade
             // 
             this.txtGrade.Location = new System.Drawing.Point(67, 121);
             this.txtGrade.Name = "txtGrade";
             this.txtGrade.Size = new System.Drawing.Size(121, 20);
-            this.txtGrade.TabIndex = 7;
+            this.txtGrade.TabIndex = 9;
             this.txtGrade.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // btnSave
@@ -153,13 +156,14 @@
             this.btnSave.Location = new System.Drawing.Point(54, 158);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 23);
-            this.btnSave.TabIndex = 8;
-            this.btnSave.Text = "Save Record";
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "&Save Record";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmNewStudent
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(204, 192);

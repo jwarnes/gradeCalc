@@ -42,6 +42,7 @@
             this.txtWeighted = new System.Windows.Forms.TextBox();
             this.txtSum = new System.Windows.Forms.TextBox();
             this.lblFinalGrade = new System.Windows.Forms.Label();
+            this.btnSaveGrade = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +56,7 @@
             this.groupBox1.Size = new System.Drawing.Size(81, 95);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Grade Type";
+            this.groupBox1.Text = "&Grade Type";
             // 
             // btnDLType
             // 
@@ -122,7 +123,7 @@
             this.btnCalcFinal.Name = "btnCalcFinal";
             this.btnCalcFinal.Size = new System.Drawing.Size(124, 23);
             this.btnCalcFinal.TabIndex = 3;
-            this.btnCalcFinal.Text = "Calculate Final Grade";
+            this.btnCalcFinal.Text = "Calculate &Final Grade";
             this.btnCalcFinal.UseVisualStyleBackColor = true;
             this.btnCalcFinal.Click += new System.EventHandler(this.btnCalcFinal_Click);
             // 
@@ -179,11 +180,22 @@
             // lblFinalGrade
             // 
             this.lblFinalGrade.AutoSize = true;
-            this.lblFinalGrade.Location = new System.Drawing.Point(193, 136);
+            this.lblFinalGrade.Location = new System.Drawing.Point(193, 118);
             this.lblFinalGrade.Name = "lblFinalGrade";
             this.lblFinalGrade.Size = new System.Drawing.Size(91, 13);
             this.lblFinalGrade.TabIndex = 10;
             this.lblFinalGrade.Text = "-Final Grade Calc-";
+            this.lblFinalGrade.TextChanged += new System.EventHandler(this.lblFinalGrade_TextChanged);
+            // 
+            // btnSaveGrade
+            // 
+            this.btnSaveGrade.Location = new System.Drawing.Point(201, 141);
+            this.btnSaveGrade.Name = "btnSaveGrade";
+            this.btnSaveGrade.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveGrade.TabIndex = 11;
+            this.btnSaveGrade.Text = "&Save";
+            this.btnSaveGrade.UseVisualStyleBackColor = true;
+            this.btnSaveGrade.Click += new System.EventHandler(this.btnSaveGrade_Click);
             // 
             // frmEnterGrades
             // 
@@ -191,6 +203,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(320, 176);
+            this.Controls.Add(this.btnSaveGrade);
             this.Controls.Add(this.lblFinalGrade);
             this.Controls.Add(this.txtSum);
             this.Controls.Add(this.txtWeighted);
@@ -205,7 +218,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmEnterGrades";
-            this.Text = "Enter Grades";
+            this.Text = "Calculate Final Grade";
             this.Load += new System.EventHandler(this.frmEnterGrades_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -230,6 +243,7 @@
         private System.Windows.Forms.TextBox txtWeighted;
         private System.Windows.Forms.TextBox txtSum;
         private System.Windows.Forms.Label lblFinalGrade;
+        private System.Windows.Forms.Button btnSaveGrade;
     }
 }
 
