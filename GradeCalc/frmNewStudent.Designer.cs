@@ -48,9 +48,12 @@
             this.cbName.Name = "cbName";
             this.cbName.Size = new System.Drawing.Size(121, 21);
             this.cbName.TabIndex = 0;
+            this.cbName.TextUpdate += new System.EventHandler(this.control_TextUpdate);
+            this.cbName.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // cbCourse
             // 
+            this.cbCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCourse.FormattingEnabled = true;
             this.cbCourse.Items.AddRange(new object[] {
             "CSC 253-680C",
@@ -60,9 +63,11 @@
             this.cbCourse.Name = "cbCourse";
             this.cbCourse.Size = new System.Drawing.Size(121, 21);
             this.cbCourse.TabIndex = 1;
+            this.cbCourse.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // cbYear
             // 
+            this.cbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbYear.FormattingEnabled = true;
             this.cbYear.Items.AddRange(new object[] {
             "2011",
@@ -73,9 +78,11 @@
             this.cbYear.Name = "cbYear";
             this.cbYear.Size = new System.Drawing.Size(121, 21);
             this.cbYear.TabIndex = 2;
+            this.cbYear.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // cbTerm
             // 
+            this.cbTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTerm.FormattingEnabled = true;
             this.cbTerm.Items.AddRange(new object[] {
             "Spring",
@@ -84,6 +91,7 @@
             this.cbTerm.Name = "cbTerm";
             this.cbTerm.Size = new System.Drawing.Size(121, 21);
             this.cbTerm.TabIndex = 3;
+            this.cbTerm.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // label1
             // 
@@ -137,15 +145,18 @@
             this.txtGrade.Name = "txtGrade";
             this.txtGrade.Size = new System.Drawing.Size(121, 20);
             this.txtGrade.TabIndex = 7;
+            this.txtGrade.TextChanged += new System.EventHandler(this.control_TextUpdate);
             // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(54, 158);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 23);
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save Record";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmNewStudent
             // 

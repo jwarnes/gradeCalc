@@ -67,6 +67,7 @@
     <Compile Include="Grade.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs" />
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="frmEnterGrades.resx">
       <DependentUpon>frmEnterGrades.cs</DependentUpon>

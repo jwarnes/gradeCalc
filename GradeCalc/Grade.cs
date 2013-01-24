@@ -48,6 +48,8 @@ namespace GradeCalc
 
         #endregion
 
+
+
         public Grade(double grade, double weight, GradeType type)
         {
             this.grade = grade;
@@ -55,5 +57,19 @@ namespace GradeCalc
             this.type = type;
         }
 
+        public static string GetLetter(double g)
+        {
+            string l = "F";
+            if (g > 70)
+                l = "D";
+            if (g > 76)
+                l = "C";
+            if (g > 84)
+                l = "B";
+            if (g > 92)
+                l = "A";
+
+            return l;
+        }
     }
 }

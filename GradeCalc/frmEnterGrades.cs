@@ -18,7 +18,7 @@ namespace GradeCalc
         #endregion
 
         #region Construct and Load
-        public frmEnterGrades()
+        public frmEnterGrades(frmNewStudent parent)
         {
             InitializeComponent();
             grades = new List<Grade>();
@@ -83,7 +83,7 @@ namespace GradeCalc
             double final =
                 (CalculateGrade(GradeType.Test) * Weight(GradeType.Test)) + (CalculateGrade(GradeType.Lab) * Weight(GradeType.Lab))
                 + (CalculateGrade(GradeType.DL) * Weight(GradeType.DL));
-            lblFinalGrade.Text = "Final Grade: " + Math.Round(final, 1).ToString() + " (" + Validator.GetLetter(final) + ")";
+            lblFinalGrade.Text = "Final Grade: " + Math.Round(final, 1).ToString() + " (" + Grade.GetLetter(final) + ")";
         }
 
         private void txtGrade_TextChanged(object sender, EventArgs e)
