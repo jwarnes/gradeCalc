@@ -76,7 +76,7 @@ namespace GradeCalc
                     Course = ls[1],
                     Year = Convert.ToInt16(ls[2]),
                     Term = ls[3],
-                    GradeValue = Convert.ToInt16(ls[4])
+                    GradeValue = Convert.ToDouble(ls[4])
                 };
 
 

@@ -129,7 +129,7 @@
             // 
             // txtGrade
             // 
-            this.txtGrade.Location = new System.Drawing.Point(12, 110);
+            this.txtGrade.Location = new System.Drawing.Point(13, 110);
             this.txtGrade.Name = "txtGrade";
             this.txtGrade.Size = new System.Drawing.Size(80, 20);
             this.txtGrade.TabIndex = 0;
