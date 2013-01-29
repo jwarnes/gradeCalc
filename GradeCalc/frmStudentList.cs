@@ -13,7 +13,6 @@ namespace GradeCalc
     public partial class frmStudentList : Form
     {
         private List<Student> students;
-
         public List<Student> Students
         {
             get { return students; }
@@ -26,10 +25,7 @@ namespace GradeCalc
             LoadFromTxt();
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            new frmNewStudent(this).ShowDialog();
-        }
+        #region Student List 
 
         public void AddStudent(Student s)
         {
@@ -52,14 +48,37 @@ namespace GradeCalc
             SaveToText();
         }
 
+        public void RefreshStudentList()
+        {
+            lbStudents.Items.Clear();
+            foreach (Student s in students)
+            {
+                lbStudents.Items.Add(s.ToString());
+            }
+            btnEdit.Enabled = (students.Count > 0 && lbStudents.SelectedIndex != -1);
+            btnRemove.Enabled = (students.Count > 0 && lbStudents.SelectedIndex != -1);
+        }
+        #endregion
+
+        #region Persistant Data
+
         public void LoadFromTxt(string path = @"StudGradesDB.txt")
         {
             var textDB = File.ReadAllText(path).Trim().Split('\n');
 
             foreach (var line in textDB)
             {
-                var ls = line.Trim().Split('|');
-                var s = new Student(ls[0], ls[1], Convert.ToInt16(ls[3]), ls[2], Convert.ToDouble(ls[4]));
+                var ls = line.Replace("\r", string.Empty).Split('|');
+
+                var s  = new Student
+                {
+                    Name = ls[0],
+                    Course = ls[1],
+                    Year = Convert.ToInt16(ls[2]),
+                    Term = ls[3],
+                    GradeValue = Convert.ToInt16(ls[4])
+                };
+
 
                 AddStudent(s);
             }
@@ -75,15 +94,13 @@ namespace GradeCalc
             File.WriteAllText(path, studentString);
         }
 
-        public void RefreshStudentList()
+        #endregion
+
+        #region UI Events
+
+        private void btnNew_Click(object sender, EventArgs e)
         {
-            lbStudents.Items.Clear();
-            foreach (Student s in students)
-            {
-                lbStudents.Items.Add(s.ToString());
-            }
-            btnEdit.Enabled = (students.Count > 0 && lbStudents.SelectedIndex != -1);
-            btnRemove.Enabled = (students.Count > 0 && lbStudents.SelectedIndex != -1);
+            new frmNewStudent(this).ShowDialog();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -97,15 +114,18 @@ namespace GradeCalc
             new frmNewStudent(this, lbStudents.SelectedIndex).ShowDialog();
         }
 
-        public Student GetStudent(int i)
-        {
-            return students[i];
-        }
-
         private void lbStudents_SelectedIndexChanged(object sender, EventArgs e)
         {
             btnEdit.Enabled = (students.Count > 0 && lbStudents.SelectedIndex != -1);
             btnRemove.Enabled = (students.Count > 0 && lbStudents.SelectedIndex != -1);
         }
+        #endregion
+
+        public Student GetStudent(int i)
+        {
+            return students[i];
+        }
+
+
     }
 }

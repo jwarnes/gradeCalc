@@ -89,10 +89,23 @@ namespace GradeCalc
             lblFinalGrade.Text = "Final Grade: " + Math.Round(final, 1).ToString() + " (" + Grade.GetLetter(final) + ")";
         }
 
+        private void btnSaveGrade_Click(object sender, EventArgs e)
+        {
+            ParentFrm.SetGrade(Math.Round(final, 2));
+            Close();
+        }
+
+        private void lblFinalGrade_TextChanged(object sender, EventArgs e)
+        {
+            btnSaveGrade.Enabled = (final > -1);
+        }
         private void txtGrade_TextChanged(object sender, EventArgs e)
         {
             btnEnterGrade.Enabled = (txtGrade.Text != "" && Validator.isDouble(txtGrade) && Validator.inGradeRange(Convert.ToDouble(txtGrade.Text)));
         }
+
+
+
         #endregion
 
         public void refreshGradesList()
@@ -150,17 +163,6 @@ namespace GradeCalc
             }
 
             btnCalcFinal.Enabled = (count[0] > 0 && count[1] > 0 && count[2] > 0);
-        }
-
-        private void lblFinalGrade_TextChanged(object sender, EventArgs e)
-        {
-            btnSaveGrade.Enabled = (final > -1);
-        }
-
-        private void btnSaveGrade_Click(object sender, EventArgs e)
-        {
-            ParentFrm.SetGrade(Math.Round(final, 2));
-            Close();
         }
      
     }

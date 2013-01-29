@@ -39,7 +39,7 @@ namespace GradeCalc
 
         public string SaveString()
         {
-            return string.Format("{0}|{1}|{2}|{3}|{4}\r\n", Name, Course, Term, Year, GradeValue);
+            return string.Format("{0}|{1}|{2}|{3}|{4}\r\n", Name, Course, Year, Term, GradeValue);
         }
     }
 }

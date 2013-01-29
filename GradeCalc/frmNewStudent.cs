@@ -28,33 +28,9 @@ namespace GradeCalc
             LoadStudent(parent.GetStudent(editIndex));
         }
 
-        private void control_TextUpdate(object sender, EventArgs e)
-        {
-            //validation
-            btnSave.Enabled = (cbCourse.Text != "" && cbName.Text != "" && cbTerm.Text != "" && cbYear.Text != "" && txtGrade.Text != "" 
-                && Validator.isDouble(txtGrade));
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            var student = new Student(cbName.Text, cbCourse.Text, Convert.ToInt16(cbYear.Text), cbTerm.Text, Convert.ToDouble(txtGrade.Text));
-
-            if (editIndex == -1)
-                ParentFrm.AddStudent(student);
-            else
-                ParentFrm.EditStudent(student, editIndex);
-
-            Close();
-        }
-
         public void SetGrade(double grade)
         {
             txtGrade.Text = grade.ToString();
-        }
-
-        private void btnCalc_Click(object sender, EventArgs e)
-        {
-            new frmEnterGrades(this).ShowDialog();
         }
 
         private void LoadStudent(Student s)
@@ -73,6 +49,35 @@ namespace GradeCalc
                 cbName.Items.Add(s.Name);
             }
         }
+
+        #region UI Events
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var student = new Student(cbName.Text, cbCourse.Text, Convert.ToInt16(cbYear.Text), cbTerm.Text, Convert.ToDouble(txtGrade.Text));
+
+            if (editIndex == -1)
+                ParentFrm.AddStudent(student);
+            else
+                ParentFrm.EditStudent(student, editIndex);
+
+            Close();
+        }
+
+        private void btnCalc_Click(object sender, EventArgs e)
+        {
+            new frmEnterGrades(this).ShowDialog();
+        }
+
+        private void control_TextUpdate(object sender, EventArgs e)
+        {
+            //validation
+            btnSave.Enabled = (cbCourse.Text != "" && cbName.Text != "" && cbTerm.Text != "" && cbYear.Text != "" && txtGrade.Text != "" 
+                && Validator.isDouble(txtGrade));
+        }
+
+
+        #endregion
 
 
     }
